@@ -10,25 +10,23 @@ import { Footer } from './Footer/Footer';
 
 const Layout = ({ children }: LayoutProps): JSX.Element => {
 	return (
-		<>
-		<Header/>
-		<div>
-			<Sidebar/>
-			<div>
+		<div className={styles.wrapper}>
+			<Header className={styles.header} />
+			<Sidebar className={styles.sidebar} />
+			<div className={styles.body}>
 				{children}
 			</div>
+			<Footer className={styles.footer} />
 		</div>
-		<Footer/>
-		</>
 	);
 };
 
 
-export const withLayout = <T extends Record<string, unknown>>( Component: FunctionComponent<T> ) => {
+export const withLayout = <T extends Record<string, unknown>>(Component: FunctionComponent<T>) => {
 	return function withLayoutComponent(props: T) {
 		return (
 			<Layout>
-				<Component {...props}/>
+				<Component {...props} />
 			</Layout>
 		);
 	};
